@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahish Library | 24/7 Self-Study Centre, Nalanda</title>
+  <style>
+    /* ==========================================================================
+       1. ROOT VARIABLES & RESET (100% Self-Contained Dark Neon Glassmorphism)
+       ========================================================================== */
+    :root {
+      --bg-deep: #090d16;
+      --bg-navy: #0d1322;
+      --bg-card: rgba(16, 24, 40, 0.85);
+      --bg-card-hover: rgba(22, 33, 54, 0.95);
+      --bg-input: rgba(7, 11, 20, 0.9);
+      --cyan: #00f0ff;
+      --cyan-dim: rgba(0, 240, 255, 0.14);
+      --cyan-border: rgba(0, 240, 255, 0.3);
+      --cyan-glow: 0 0 24px rgba(0, 240, 255, 0.25);
+      --emerald: #25d366;
+      --emerald-bright: #34d399;
+      --amber: #fbbf24;
+      --rose: #fb7185;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --border-subtle: rgba(148, 163, 184, 0.16);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(0, 240, 255, 0.08), transparent 36%),
+        radial-gradient(circle at 88% 35%, rgba(14, 165, 233, 0.07), transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(37, 211, 102, 0.06), transparent 42%);
+      color: var(--text-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button, input, select { font-family: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .text-cyan { color: var(--cyan); }
+    .text-emerald { color: var(--emerald-bright); }
+    .hidden { display: none !important; }
+
+    /* ==========================================================================
+       2. GLASSMORPHISM CARDS & BUTTONS
+       ========================================================================== */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .glass-card:hover {
+      border-color: var(--cyan-border);
+      background: var(--bg-card-hover);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 240, 255, 0.08);
+    }
+
+    .btn-cyan {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%);
+      color: #040812;
+      font-weight: 800;
+      font-size: 0.94rem;
+      padding: 13px 22px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .btn-cyan:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 28px rgba(0, 240, 255, 0.5);
+      filter: brightness(1.06);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(16, 24, 40, 0.9);
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--cyan-border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      color: #03150e;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 13px 22px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.32);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+    }
+
+    .btn-danger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(251, 113, 133, 0.14);
+      color: var(--rose);
+      border: 1px solid rgba(251, 113, 133, 0.35);
+      font-weight: 700;
+      font-size: 0.84rem;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-danger:hover {
+      background: rgba(251, 113, 133, 0.25);
+    }
+
+    /* ==========================================================================
+       3. STICKY NAVIGATION HEADER
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 13, 22, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .glow-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan), 0 0 24px var(--cyan);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .brand-sub {
+      font-size: 0.74rem;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .owner-pill-btn {
+      padding: 9px 14px;
+      font-size: 0.82rem;
+      border-radius: 9px;
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan-border);
+      color: var(--cyan);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .owner-pill-btn:hover {
+      background: rgba(0, 240, 255, 0.24);
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--cyan-border);
+      color: var(--cyan);
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .mobile-drawer {
+      background: rgba(13, 19, 34, 0.98);
+      border-bottom: 1px solid var(--cyan-border);
+      padding: 14px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-drawer a {
+      padding: 11px 14px;
+      border-radius: 10px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 500;
+      background: rgba(16, 24, 40, 0.6);
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION
+       ========================================================================== */
+    .hero {
+      padding: 68px 0 54px;
+      text-align: center;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan-border);
+      color: var(--cyan);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      max-width: 850px;
+      margin: 0 auto 18px;
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .highlight-card {
+      padding: 20px 16px;
+      text-align: center;
+      border-color: rgba(0, 240, 255, 0.2);
+    }
+
+    .highlight-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--cyan);
+      margin-bottom: 4px;
+    }
+
+    .highlight-sub {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       5. SECTIONS & HEADINGS
+       ========================================================================== */
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-alt {
+      background: rgba(13, 19, 34, 0.62);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 40px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    /* ==========================================================================
+       6. LIBRARY TOUR & PHOTO GALLERY + LIGHTBOX
+       ========================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-thumb {
+      width: 100%;
+      height: 230px;
+      background: #060a12;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-card:hover .gallery-thumb img {
+      transform: scale(1.04);
+    }
+
+    .zoom-badge {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      background: rgba(9, 13, 22, 0.84);
+      border: 1px solid var(--cyan-border);
+      color: var(--cyan);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    .gallery-meta {
+      padding: 18px 20px;
+    }
+
+    .gallery-meta h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .gallery-meta p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .gallery-footer-action {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       7. SHIFTS & FEE CALCULATOR
+       ========================================================================== */
+    .referral-bar {
+      max-width: 620px;
+      margin: 0 auto 36px;
+      padding: 22px 24px;
+      border-color: var(--cyan-border);
+      box-shadow: var(--cyan-glow);
+    }
+
+    .referral-bar-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .referral-bar-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .referral-bar-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .referral-input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-input);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      color: #ffffff;
+      font-size: 0.94rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .input-field:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.14);
+    }
+
+    .code-input {
+      text-transform: uppercase;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+
+    .status-msg {
+      margin-top: 10px;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .status-success { color: var(--emerald-bright); }
+    .status-error { color: var(--rose); }
+    .status-warn { color: var(--amber); }
+
+    .shifts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .shift-card {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .shift-card.selected-shift {
+      border-color: var(--cyan);
+      box-shadow: 0 0 26px rgba(0, 240, 255, 0.22);
+      background: rgba(18, 32, 58, 0.94);
+    }
+
+    .shift-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 8px;
+    }
+
+    .shift-badge {
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan-border);
+      color: var(--cyan);
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .seats-left {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--emerald-bright);
+    }
+
+    .shift-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .shift-time {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .shift-price-box {
+      padding: 13px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .shift-price {
+      font-size: 1.95rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .shift-period {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .shift-old-price {
+      font-size: 0.94rem;
+      color: var(--text-dim);
+      text-decoration: line-through;
+      margin-left: 4px;
+    }
+
+    .shift-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 0.87rem;
+      color: #cbd5e1;
+    }
+
+    .shift-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .check-icon {
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    /* ==========================================================================
+       8. UNIQUE REFERRAL CODE GENERATOR ('REFER & EARN ₹100')
+       ========================================================================== */
+    .referral-box {
+      padding: 34px;
+      border-color: var(--cyan-border);
+      box-shadow: var(--cyan-glow);
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .referral-info h2 {
+      font-size: clamp(1.6rem, 3vw, 2.15rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .referral-info p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      background: rgba(9, 13, 22, 0.6);
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .generator-panel {
+      background: rgba(9, 13, 22, 0.82);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .generator-panel h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.77rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+
+    .generated-box {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .code-display-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--bg-deep);
+      border: 2px dashed var(--cyan);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin: 8px 0 14px;
+    }
+
+    .code-text {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1.28rem;
+      font-weight: 900;
+      color: var(--cyan);
+      letter-spacing: 0.08em;
+    }
+
+    .copy-btn {
+      padding: 7px 13px;
+      border-radius: 8px;
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan-border);
+      color: var(--cyan);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       9. 2-DAY FREE DEMO DIGITAL PASS GENERATOR
+       ========================================================================== */
+    .demo-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .demo-form-card {
+      padding: 28px;
+      border-color: var(--cyan-border);
+    }
+
+    .demo-form-card h3 {
+      font-size: 1.28rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .demo-form-card > p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .pass-preview-card {
+      padding: 28px;
+      border: 1px solid var(--cyan);
+      box-shadow: 0 0 32px rgba(0, 240, 255, 0.18);
+    }
+
+    .pass-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed rgba(0, 240, 255, 0.35);
+      margin-bottom: 16px;
+      gap: 10px;
+    }
+
+    .pass-id-pill {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .pass-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 20px;
+    }
+
+    .pass-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.91rem;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .pass-row span:first-child { color: var(--text-muted); }
+    .pass-row span:last-child { font-weight: 700; color: #ffffff; text-align: right; }
+
+    .pass-placeholder {
+      text-align: center;
+      padding: 36px 14px;
+      color: var(--text-muted);
+    }
+
+    .pass-placeholder-icon {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 14px;
+      border-radius: 16px;
+      background: var(--cyan-dim);
+      border: 1px solid var(--cyan-border);
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ==========================================================================
+       10. MODALS (LIGHTBOX & OWNER PHOTO MANAGER)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      background: rgba(4, 7, 15, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      overflow-y: auto;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 680px;
+      background: #0d1424;
+      border: 1px solid var(--cyan-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 240, 255, 0.16);
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 18px;
+    }
+
+    .modal-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .lightbox-img {
+      width: 100%;
+      max-height: 62vh;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      background: #050811;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 14px;
+    }
+
+    .owner-photo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .owner-photo-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(9, 13, 22, 0.85);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .owner-photo-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .owner-photo-item img {
+      width: 64px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: #050811;
+    }
+
+    /* ==========================================================================
+       11. FOOTER & FLOATING WHATSAPP
+       ========================================================================== */
+    .footer {
+      background: #050810;
+      border-top: 1px solid var(--border-subtle);
+      padding: 50px 0 34px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 32px;
+    }
+
+    .footer h4 {
+      color: #ffffff;
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .footer p, .footer li {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      font-size: 0.84rem;
+      color: var(--text-dim);
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .floating-wa:hover {
+      transform: scale(1.08) translateY(-3px);
+      box-shadow: 0 12px 34px rgba(37, 211, 102, 0.68);
+    }
+
+    /* ==========================================================================
+       12. RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+      .shifts-grid { grid-template-columns: repeat(2, 1fr); }
+      .referral-box, .demo-layout, .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .highlights-grid, .gallery-grid, .shifts-grid { grid-template-columns: 1fr; }
+      .referral-input-row, .referral-bar-top { flex-direction: column; align-items: stretch; }
+      .referral-box, .demo-form-card, .pass-preview-card, .modal-box { padding: 20px 16px; }
+      .hero { padding: 48px 0 38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. STICKY NAVIGATION HEADER -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <span class="glow-dot" aria-hidden="true"></span>
+        <div>
+          <div class="brand-title">Rahish Library (Nalanda)</div>
+          <div class="brand-sub">24/7 Study Centre &amp; Self-Study Zone</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#gallery">Gallery</a>
+        <a href="#shifts">Shifts &amp; Fees</a>
+        <a href="#referral">Refer &amp; Earn</a>
+        <a href="#demo-pass">Demo Pass</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="owner-pill-btn" onclick="openOwnerModal()">
+          <span>Owner Upload (PIN)</span>
+        </button>
+
+        <button type="button" id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileDrawer" class="mobile-drawer hidden">
+      <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+      <a href="#shifts" onclick="closeMobileMenu()">Shifts &amp; Fees</a>
+      <a href="#referral" onclick="closeMobileMenu()">Refer &amp; Earn ₹100</a>
+      <a href="#demo-pass" onclick="closeMobileMenu()">2-Day Demo Pass</a>
+      <a href="#contact" onclick="closeMobileMenu()">Contact &amp; Location</a>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="pill-badge">
+        <span class="pulse-dot"></span>
+        <span>24/7 Open • Nalanda, Bihar</span>
+      </div>
+
+      <h1>
+        Focus Without Limits at <span class="text-cyan">Rahish Library</span>
+      </h1>
+
+      <p>
+        Nalanda’s dedicated 24/7 self-study sanctuary for BPSC, Bihar SSC, STET, Railway, and UPSC aspirants. Pin-drop silence, ergonomic cabins, and zero power or internet interruptions.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#demo-pass" class="btn-cyan">
+          <span>Book 2-Day Free Demo</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href="https://wa.me/919128858500?text=Hello%20Rahish%20Library%20(Nalanda)%2C%20mujhe%202-Day%20Free%20Demo%20aur%20seat%20availability%20ke%20baare%20mein%20jaankari%20chahiye."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp"
+        >
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="highlights-grid">
+        <div class="glass-card highlight-card">
+          <div class="highlight-title">High-Speed Wi-Fi</div>
+          <div class="highlight-sub">Buffer-Free Online Classes &amp; Tests</div>
+        </div>
+        <div class="glass-card highlight-card">
+          <div class="highlight-title">24/7 Inverter Backup</div>
+          <div class="highlight-sub">Uninterrupted Day &amp; Night Power</div>
+        </div>
+        <div class="glass-card highlight-card">
+          <div class="highlight-title">Silent AC/Fan Cabins</div>
+          <div class="highlight-sub">Individual LED Light &amp; Charging</div>
+        </div>
+        <div class="glass-card highlight-card">
+          <div class="highlight-title">RO Water</div>
+          <div class="highlight-sub">Chilled &amp; Pure Drinking Water</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. LIBRARY TOUR & PHOTO GALLERY + LIGHTBOX ZOOM -->
+  <section id="gallery" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Campus &amp; Interior Tour</span>
+        <h2 class="section-title">Library Tour &amp; Photo Gallery</h2>
+        <p class="section-desc">Click any photo to zoom fullscreen and inspect our study cabins, lighting, and peaceful reading environment.</p>
+      </div>
+
+      <div id="galleryGrid" class="gallery-grid"></div>
+
+      <div class="gallery-footer-action">
+        <button type="button" class="btn-outline" onclick="openOwnerModal()">
+          <span>Owner: Upload / Manage Photos</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INTERACTIVE SHIFTS & FEE CALCULATOR -->
+  <section id="shifts" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Flexible &amp; Affordable Plans</span>
+        <h2 class="section-title">Interactive Shifts &amp; Fee Calculator</h2>
+        <p class="section-desc">Click any shift card to select it for your 2-Day Free Demo Pass. Apply a referral code below for an instant ₹100 OFF.</p>
+      </div>
+
+      <!-- Referral Code Input Above Cards -->
+      <div class="glass-card referral-bar">
+        <div class="referral-bar-top">
+          <div>
+            <div class="referral-bar-title">Apply Friend's Referral Code</div>
+            <div class="referral-bar-sub">Enter any valid 'RAHISH-' code for instant ₹100 OFF on all shifts!</div>
+          </div>
+          <a href="#referral" class="text-cyan" style="font-size: 0.84rem; font-weight: 700;">Create Code →</a>
+        </div>
+
+        <div class="referral-input-row">
+          <input
+            type="text"
+            id="shiftReferralInput"
+            class="input-field code-input"
+            placeholder="e.g., RAHISH-8500P"
+            oninput="validateShiftReferralCode(false)"
+          />
+          <button type="button" class="btn-cyan" onclick="validateShiftReferralCode(true)" style="white-space: nowrap;">
+            Apply ₹100 OFF
+          </button>
+        </div>
+
+        <div id="shiftReferralStatus" class="status-msg hidden"></div>
+      </div>
+
+      <div id="shiftsGrid" class="shifts-grid"></div>
+    </div>
+  </section>
+
+  <!-- 5. UNIQUE REFERRAL CODE GENERATOR ('REFER & EARN ₹100') -->
+  <section id="referral" class="section section-alt">
+    <div class="container">
+      <div class="glass-card referral-box">
+        <div class="referral-info">
+          <span class="section-tag">Refer &amp; Earn ₹100</span>
+          <h2>Bring a Study Partner, Both Save <span class="text-cyan">₹100!</span></h2>
+          <p>
+            Existing Rahish Library students can generate their personal referral code below and share it on WhatsApp with friends preparing in Nalanda.
+          </p>
+
+          <div class="benefit-list">
+            <div class="benefit-item">
+              <span class="text-cyan" style="font-weight: 900;">✓</span>
+              <span><strong>Friend Gets ₹100 OFF:</strong> Instant ₹100 discount on their first month's admission fee.</span>
+            </div>
+            <div class="benefit-item">
+              <span class="text-cyan" style="font-weight: 900;">✓</span>
+              <span><strong>You Get ₹100 OFF:</strong> Once your friend joins, ₹100 is deducted from your next month's fee.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="generator-panel">
+          <h3>Generate Your Unique Referral Code</h3>
+          <form onsubmit="generateStudentReferralCode(event)">
+            <div class="form-group">
+              <label class="form-label" for="refStudentName">Your Full Name *</label>
+              <input type="text" id="refStudentName" class="input-field" required placeholder="e.g., Prashant Kumar" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="refStudentPhone">10-Digit Mobile Number *</label>
+              <input type="tel" id="refStudentPhone" class="input-field" required pattern="[0-9]{10}" maxlength="10" placeholder="e.g., 9128858500" />
+            </div>
+            <button type="submit" class="btn-cyan" style="width: 100%;">
+              Generate My Referral Code
+            </button>
+          </form>
+
+          <div id="generatedCodeSection" class="generated-box hidden">
+            <div style="font-size: 0.82rem; color: var(--text-muted);">Your Personal Referral Code:</div>
+            <div class="code-display-row">
+              <span id="generatedCodeText" class="code-text">RAHISH-8500P</span>
+              <button type="button" class="copy-btn" onclick="copyGeneratedCode()">
+                <span id="copyBtnLabel">Copy Code</span>
+              </button>
+            </div>
+            <a id="shareCodeWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="width: 100%;">
+              <span>Share Code on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 2-DAY FREE DEMO DIGITAL PASS GENERATOR -->
+  <section id="demo-pass" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Free 2-Day Trial</span>
+        <h2 class="section-title">2-Day Free Demo Digital Pass Generator</h2>
+        <p class="section-desc">Experience our peaceful study environment before paying a single rupee. Generate your digital pass and confirm on WhatsApp.</p>
+      </div>
+
+      <div class="demo-layout">
+        <div class="glass-card demo-form-card">
+          <h3>Create Your Digital Demo Pass</h3>
+          <p>Your selected shift and referral discount sync automatically.</p>
+
+          <form id="demoForm" onsubmit="generateDigitalPass(event)">
+            <div class="form-group">
+              <label class="form-label" for="demoName">Student Full Name *</label>
+              <input type="text" id="demoName" class="input-field" required placeholder="Enter your full name" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="demoPhone">10-Digit Mobile Number *</label>
+              <input type="tel" id="demoPhone" class="input-field" required pattern="[0-9]{10}" maxlength="10" placeholder="e.g., 9128858500" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="demoExam">Target Exam *</label>
+              <select id="demoExam" class="input-field" required>
+                <option value="BPSC TRE 4">BPSC TRE 4</option>
+                <option value="Bihar SSC">Bihar SSC</option>
+                <option value="STET">STET</option>
+                <option value="Railway NTPC/ALP">Railway NTPC/ALP</option>
+                <option value="UPSC/BPSC">UPSC/BPSC</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="demoShift">Preferred Shift *</label>
+              <select id="demoShift" class="input-field" required>
+                <option value="Morning (6 AM - 12 PM)">Morning (6 AM - 12 PM) — ₹500/mo</option>
+                <option value="Afternoon (12 PM - 6 PM)">Afternoon (12 PM - 6 PM) — ₹500/mo</option>
+                <option value="Evening (4 PM - 10 PM)">Evening (4 PM - 10 PM) — ₹500/mo</option>
+                <option value="Night Owl (10 PM - 6 AM)">Night Owl (10 PM - 6 AM) — ₹600/mo</option>
+                <option value="Full Day (12 Hrs)">Full Day (12 Hrs) — ₹900/mo</option>
+                <option value="24-Hr Reserved Seat">24-Hr Reserved Seat — ₹1,300/mo</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="demoRefCode">Optional Referral Code (Get ₹100 OFF)</label>
+              <input
+                type="text"
+                id="demoRefCode"
+                class="input-field code-input"
+                placeholder="e.g., RAHISH-8500P"
+                oninput="validateDemoReferralCode()"
+              />
+              <div id="demoRefStatus" class="status-msg hidden"></div>
+            </div>
+
+            <button type="submit" class="btn-cyan" style="width: 100%; margin-top: 6px;">
+              Generate Digital Entry Pass
+            </button>
+          </form>
+        </div>
+
+        <div class="glass-card pass-preview-card">
+          <div id="passPlaceholder" class="pass-placeholder">
+            <div class="pass-placeholder-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                <line x1="7" y1="9" x2="17" y2="9"></line>
+                <line x1="7" y1="13" x2="13" y2="13"></line>
+              </svg>
+            </div>
+            <h4 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 8px;">Your Digital Pass Preview</h4>
+            <p style="font-size: 0.9rem;">Submit the form on the left to generate your neon-bordered 2-Day Free Demo Entry Pass with Pass ID and WhatsApp verification.</p>
+          </div>
+
+          <div id="digitalPassCard" class="hidden">
+            <div class="pass-header">
+              <div>
+                <div style="font-size: 0.74rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.06em;">Rahish Library • Nalanda</div>
+                <div style="font-size: 1.22rem; font-weight: 900; color: #ffffff;">Digital Entry Pass</div>
+              </div>
+              <div id="passIdDisplay" class="pass-id-pill">RL-2026-8500</div>
+            </div>
+
+            <div class="pass-rows">
+              <div class="pass-row">
+                <span>Student Name</span>
+                <span id="passStudentName">-</span>
+              </div>
+              <div class="pass-row">
+                <span>Mobile Number</span>
+                <span id="passStudentPhone">-</span>
+              </div>
+              <div class="pass-row">
+                <span>Target Exam</span>
+                <span id="passTargetExam">-</span>
+              </div>
+              <div class="pass-row">
+                <span>Preferred Shift</span>
+                <span id="passSelectedShift">-</span>
+              </div>
+              <div class="pass-row">
+                <span>Validity</span>
+                <span class="text-cyan">2 Days Free Trial</span>
+              </div>
+              <div class="pass-row">
+                <span>Referral Code</span>
+                <span id="passAppliedCode" class="text-cyan">None</span>
+              </div>
+              <div class="pass-row" style="border-bottom: none;">
+                <span>Monthly Fee Preview</span>
+                <span id="passFinalFee" class="text-emerald">₹500/month</span>
+              </div>
+            </div>
+
+            <a id="sendPassWaBtn" href="https://wa.me/919128858500" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="width: 100%;">
+              <span>Send Pass on WhatsApp (+91 91288 58500)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CONTACT & LOCATION FOOTER -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Rahish Library (Nalanda)</h4>
+          <p>
+            Rahish Library, Nalanda, Bihar • Open 24 Hours. A calm, disciplined self-study zone built for competitive exam success.
+          </p>
+          <p style="color: var(--cyan); font-weight: 700; margin-top: 10px;">
+            24/7 Study Centre &amp; Self-Study Zone
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Navigation</h4>
+          <ul>
+            <li><a href="#gallery">Library Photo Gallery</a></li>
+            <li><a href="#shifts">Shifts &amp; Monthly Fees</a></li>
+            <li><a href="#referral">Refer &amp; Earn ₹100</a></li>
+            <li><a href="#demo-pass">2-Day Free Demo Pass</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Direct Contact</h4>
+          <p><strong>Location:</strong> Rahish Library, Nalanda, Bihar</p>
+          <p><strong>Direct Call:</strong> <a href="tel:+919128858500" class="text-cyan">+91 91288 58500</a></p>
+          <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px;">
+            <a href="tel:+919128858500" class="btn-outline" style="padding: 10px 16px; font-size: 0.86rem;">
+              Call Now
+            </a>
+            <a
+              href="https://wa.me/919128858500?text=Hello%20Rahish%20Library%20(Nalanda)%2C%20mujhe%20seat%20availability%20aur%20fees%20ke%20baare%20mein%20jaankari%20chahiye."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp"
+              style="padding: 10px 16px; font-size: 0.86rem;"
+            >
+              WhatsApp Chat
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Rahish Library, Nalanda, Bihar • Open 24 Hours. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BOTTOM-RIGHT WHATSAPP BUTTON -->
+  <a
+    href="https://wa.me/919128858500?text=Hello%20Rahish%20Library%20(Nalanda)%2C%20mujhe%202-Day%20Free%20Demo%20aur%20seat%20availability%20ke%20baare%20mein%20jaankari%20chahiye."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="floating-wa"
+    aria-label="Chat on WhatsApp"
+    title="WhatsApp Rahish Library (+91 91288 58500)"
+  >
+    <svg width="30" height="30" viewBox="0 0 32 32" fill="currentColor">
+      <path d="M16.004 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.256.59 4.46 1.71 6.404L3.2 28.8l6.564-1.72a12.74 12.74 0 0 0 6.24 1.62h.006c7.058 0 12.798-5.74 12.798-12.8 0-3.42-1.332-6.636-3.752-9.054A12.716 12.716 0 0 0 16.004 3.2zm0 23.336h-.004a10.61 10.61 0 0 1-5.41-1.482l-.388-.23-3.896 1.022 1.04-3.798-.252-.402a10.587 10.587 0 0 1-1.626-5.646c0-5.864 4.772-10.636 10.64-10.636 2.84 0 5.51 1.108 7.518 3.118a10.567 10.567 0 0 1 3.114 7.522c0 5.866-4.772 10.632-10.636 10.632zm5.834-7.966c-.32-.16-1.892-.934-2.186-1.04-.292-.106-.506-.16-.72.16-.212.32-.826 1.04-1.012 1.254-.186.212-.372.24-.692.08-.32-.16-1.35-.498-2.572-1.588-.95-.848-1.592-1.896-1.778-2.216-.186-.32-.02-.492.14-.652.144-.144.32-.372.48-.56.16-.186.212-.32.32-.532.106-.214.054-.4-.026-.56-.08-.16-.72-1.734-.986-2.374-.26-.624-.524-.54-.72-.55l-.614-.01c-.214 0-.56.08-.852.4-.294.32-1.12 1.094-1.12 2.668s1.146 3.094 1.306 3.308c.16.212 2.256 3.444 5.466 4.83.764.33 1.36.526 1.824.674.766.244 1.464.21 2.016.126.616-.092 1.892-.774 2.158-1.52.266-.748.266-1.388.186-1.52-.08-.134-.292-.214-.612-.374z"/>
+    </svg>
+  </a>
+
+  <!-- LIGHTBOX ZOOM MODAL -->
+  <div id="lightboxModal" class="modal-backdrop hidden" onclick="closeLightboxOnBackdrop(event)">
+    <div class="modal-box" style="max-width: 820px;">
+      <div class="modal-top">
+        <div>
+          <div style="font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase;">Rahish Library • Campus Preview</div>
+          <h3 id="lightboxTitle" style="font-size: 1.2rem; color: #ffffff;">Photo Title</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeLightbox()" aria-label="Close Lightbox">✕</button>
+      </div>
+      <img id="lightboxImage" class="lightbox-img" src="" alt="Library Preview" />
+      <p id="lightboxCaption" style="color: var(--text-muted); font-size: 0.94rem;"></p>
+    </div>
+  </div>
+
+  <!-- OWNER-ONLY PHOTO MANAGER MODAL (DEFAULT PIN: 8500) -->
+  <div id="ownerModal" class="modal-backdrop hidden" onclick="closeOwnerModalOnBackdrop(event)">
+    <div class="modal-box">
+      <div class="modal-top">
+        <div>
+          <div style="font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase;">Admin Security Panel</div>
+          <h3 style="font-size: 1.2rem; color: #ffffff;">Owner Photo Manager</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeOwnerModal()" aria-label="Close Owner Panel">✕</button>
+      </div>
+
+      <!-- Step 1: PIN Unlock -->
+      <div id="ownerPinGate">
+        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 14px;">
+          Enter Owner PIN to upload real library photos, delete items, or update security settings. (Default PIN: <strong class="text-cyan">8500</strong>)
+        </p>
+        <form onsubmit="unlockOwnerPanel(event)">
+          <div class="form-group">
+            <label class="form-label" for="ownerPinInput">Owner Security PIN</label>
+            <input type="password" id="ownerPinInput" class="input-field" required maxlength="10" placeholder="Enter PIN (e.g., 8500)" />
+          </div>
+          <div id="ownerPinError" class="status-msg status-error hidden" style="margin-bottom: 12px;">Incorrect PIN. Please try again.</div>
+          <button type="submit" class="btn-cyan" style="width: 100%;">Unlock Owner Panel</button>
+        </form>
+      </div>
+
+      <!-- Step 2: Unlocked Photo Manager -->
+      <div id="ownerAdminContent" class="hidden">
+        <form onsubmit="handleOwnerPhotoUpload(event)" style="padding-bottom: 18px; border-bottom: 1px solid var(--border-subtle);">
+          <div class="form-group">
+            <label class="form-label" for="ownerFileInput">Select Photo(s) from Phone or Laptop *</label>
+            <input type="file" id="ownerFileInput" class="input-field" accept="image/*" multiple required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ownerPhotoTitle">Photo Title *</label>
+            <input type="text" id="ownerPhotoTitle" class="input-field" required placeholder="e.g., Main Reading Hall & AC Cabins" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ownerPhotoCaption">Caption / Description *</label>
+            <input type="text" id="ownerPhotoCaption" class="input-field" required placeholder="e.g., Comfortable ergonomic chairs with personal charging sockets" />
+          </div>
+          <button type="submit" id="uploadSubmitBtn" class="btn-cyan" style="width: 100%;">
+            Compress &amp; Publish to Live Gallery
+          </button>
+          <div id="uploadStatusMsg" class="status-msg status-success hidden"></div>
+        </form>
+
+        <!-- Manage Existing Photos -->
+        <div style="margin-top: 18px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+            <strong style="font-size: 0.96rem; color: #ffffff;">Published Gallery Photos</strong>
+            <button type="button" class="btn-outline" style="padding: 7px 12px; font-size: 0.8rem;" onclick="resetDefaultGallery()">
+              Reset Default 4 Previews
+            </button>
+          </div>
+          <div id="ownerPhotoList" class="owner-photo-list"></div>
+        </div>
+
+        <!-- Change Owner PIN -->
+        <div style="margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
+          <strong style="display: block; font-size: 0.92rem; color: #ffffff; margin-bottom: 10px;">Change Owner PIN</strong>
+          <div style="display: flex; gap: 10px;">
+            <input type="password" id="newOwnerPinInput" class="input-field" maxlength="10" placeholder="New 4-6 digit PIN" />
+            <button type="button" class="btn-outline" onclick="updateOwnerPin()" style="white-space: nowrap;">Update PIN</button>
+          </div>
+          <div id="pinUpdateMsg" class="status-msg status-success hidden"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const STORAGE_KEY_PHOTOS = 'rahish_library_gallery_v1';
+    const STORAGE_KEY_PIN = 'rahish_library_owner_pin_v1';
+    let isOwnerUnlocked = false;
+
+    // 4 Clean Self-Contained SVG Architectural Study-Hall Previews
+    function buildSvgDataUri(svgMarkup) {
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svgMarkup.trim());
+    }
+
+    const DEFAULT_GALLERY_ITEMS = [
+      {
+        id: 'def-1',
+        title: 'Study Cabins & LED Desks',
+        caption: 'Spacious partitioned study desks with individual LED focus lights, charging points, and ergonomic back-support chairs.',
+        src: buildSvgDataUri(`
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460">
+            <defs>
+              <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#09111f"/>
+                <stop offset="100%" stop-color="#11223d"/>
+              </linearGradient>
+              <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="460" fill="url(#bg1)"/>
+            <g stroke="#00f0ff" stroke-opacity="0.12" stroke-width="1">
+              <line x1="0" y1="360" x2="800" y2="360"/>
+              <line x1="160" y1="80" x2="160" y2="360"/>
+              <line x1="400" y1="80" x2="400" y2="360"/>
+              <line x1="640" y1="80" x2="640" y2="360"/>
+            </g>
+            <!-- Cabin 1 -->
+            <rect x="70" y="120" width="200" height="220" rx="12" fill="#0d172a" stroke="#00f0ff" stroke-opacity="0.45" stroke-width="2"/>
+            <polygon points="170,145 110,275 230,275" fill="url(#beam)"/>
+            <rect x="135" y="138" width="70" height="8" rx="4" fill="#00f0ff"/>
+            <rect x="90" y="275" width="160" height="12" rx="4" fill="#1e293b" stroke="#00f0ff" stroke-opacity="0.5"/>
+            <rect x="125" y="255" width="90" height="18" rx="4" fill="#0f172a" stroke="#38bdf8"/>
+            <!-- Cabin 2 -->
+            <rect x="300" y="120" width="200" height="220" rx="12" fill="#0d172a" stroke="#00f0ff" stroke-opacity="0.45" stroke-width="2"/>
+            <polygon points="400,145 340,275 460,275" fill="url(#beam)"/>
+            <rect x="365" y="138" width="70" height="8" rx="4" fill="#00f0ff"/>
+            <rect x="320" y="275" width="160" height="12" rx="4" fill="#1e293b" stroke="#00f0ff" stroke-opacity="0.5"/>
+            <rect x="360" y="252" width="80" height="21" rx="4" fill="#0f172a" stroke="#38bdf8"/>
+            <!-- Cabin 3 -->
+            <rect x="530" y="120" width="200" height="220" rx="12" fill="#0d172a" stroke="#00f0ff" stroke-opacity="0.45" stroke-width="2"/>
+            <polygon points="630,145 570,275 690,275" fill="url(#beam)"/>
+            <rect x="595" y="138" width="70" height="8" rx="4" fill="#00f0ff"/>
+            <rect x="550" y="275" width="160" height="12" rx="4" fill="#1e293b" stroke="#00f0ff" stroke-opacity="0.5"/>
+            <text x="400" y="66" fill="#00f0ff" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">INDIVIDUAL LED STUDY CABINS</text>
+            <text x="400" y="408" fill="#94a3b8" font-family="sans-serif" font-size="15" text-anchor="middle">Private Partitions • Personal Charging Socket • Cushioned Seating</text>
+          </svg>
+        `)
+      },
+      {
+        id: 'def-2',
+        title: 'Silent Reading Zone',
+        caption: 'Strictly maintained pin-drop silence zone with cool AC/fan ventilation for 12+ hours of deep exam preparation.',
+        src: buildSvgDataUri(`
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460">
+            <defs>
+              <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#08101e"/>
+                <stop offset="100%" stop-color="#0f2537"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="460" fill="url(#bg2)"/>
+            <circle cx="400" cy="215" r="115" fill="none" stroke="#00f0ff" stroke-opacity="0.2" stroke-width="2" stroke-dasharray="8 8"/>
+            <circle cx="400" cy="215" r="82" fill="rgba(0,240,255,0.08)" stroke="#00f0ff" stroke-width="2.5"/>
+            <path d="M355 190 h38 a10 10 0 0 1 10 10 v46 a8 8 0 0 0 -8 -8 h-40 z" fill="none" stroke="#00f0ff" stroke-width="3"/>
+            <path d="M445 190 h-38 a10 10 0 0 0 -10 10 v46 a8 8 0 0 1 8 -8 h40 z" fill="none" stroke="#00f0ff" stroke-width="3"/>
+            <rect x="130" y="165" width="120" height="100" rx="14" fill="#0d172a" stroke="#38bdf8" stroke-opacity="0.4"/>
+            <text x="190" y="210" fill="#00f0ff" font-family="sans-serif" font-size="18" font-weight="bold" text-anchor="middle">AC &amp; FAN</text>
+            <text x="190" y="234" fill="#cbd5e1" font-family="sans-serif" font-size="13" text-anchor="middle">Climate Control</text>
+            <rect x="550" y="165" width="120" height="100" rx="14" fill="#0d172a" stroke="#38bdf8" stroke-opacity="0.4"/>
+            <text x="610" y="210" fill="#25d366" font-family="sans-serif" font-size="18" font-weight="bold" text-anchor="middle">CCTV 24/7</text>
+            <text x="610" y="234" fill="#cbd5e1" font-family="sans-serif" font-size="13" text-anchor="middle">Safe Campus</text>
+            <text x="400" y="66" fill="#00f0ff" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">PIN-DROP SILENT READING ZONE</text>
+            <text x="400" y="408" fill="#94a3b8" font-family="sans-serif" font-size="15" text-anchor="middle">Dedicated Distraction-Free Hall for BPSC, BSSC &amp; Railway Aspirants</text>
+          </svg>
+        `)
+      },
+      {
+        id: 'def-3',
+        title: 'High-Speed Wi-Fi & Power Backup',
+        caption: 'Dual-band fiber broadband paired with 100% heavy-duty inverter backup so online test series never pause.',
+        src: buildSvgDataUri(`
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460">
+            <rect width="800" height="460" fill="#09101d"/>
+            <rect x="110" y="115" width="260" height="220" rx="18" fill="#0f1b30" stroke="#00f0ff" stroke-opacity="0.45" stroke-width="2"/>
+            <path d="M185 215 a75 75 0 0 1 110 0" fill="none" stroke="#00f0ff" stroke-width="5" stroke-linecap="round"/>
+            <path d="M205 238 a48 48 0 0 1 70 0" fill="none" stroke="#00f0ff" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="240" cy="260" r="8" fill="#00f0ff"/>
+            <text x="240" y="302" fill="#ffffff" font-family="sans-serif" font-size="17" font-weight="bold" text-anchor="middle">FIBER WI-FI 5G</text>
+            <rect x="430" y="115" width="260" height="220" rx="18" fill="#0f1b30" stroke="#25d366" stroke-opacity="0.5" stroke-width="2"/>
+            <polygon points="570,155 530,225 562,225 550,275 595,205 562,205" fill="#25d366"/>
+            <text x="560" y="302" fill="#ffffff" font-family="sans-serif" font-size="17" font-weight="bold" text-anchor="middle">100% POWER BACKUP</text>
+            <text x="400" y="66" fill="#00f0ff" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">NON-STOP INTERNET &amp; ELECTRICITY</text>
+            <text x="400" y="408" fill="#94a3b8" font-family="sans-serif" font-size="15" text-anchor="middle">Zero Downtime During Day &amp; Night Shifts in Nalanda</text>
+          </svg>
+        `)
+      },
+      {
+        id: 'def-4',
+        title: 'RO Water & Refreshment Area',
+        caption: 'Hygienic chilled/normal RO drinking water, sanitized washrooms, and separate lunch/break space outside the reading hall.',
+        src: buildSvgDataUri(`
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460">
+            <rect width="800" height="460" fill="#08121e"/>
+            <rect x="140" y="120" width="520" height="215" rx="20" fill="#0e1a2e" stroke="#00f0ff" stroke-opacity="0.4" stroke-width="2"/>
+            <path d="M270 165 C270 165 230 218 230 245 a40 40 0 0 0 80 0 C310 218 270 165 270 165 Z" fill="rgba(0,240,255,0.2)" stroke="#00f0ff" stroke-width="3.5"/>
+            <text x="270" y="305" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">CHILLED RO WATER</text>
+            <rect x="440" y="170" width="130" height="95" rx="12" fill="rgba(37,211,102,0.12)" stroke="#25d366" stroke-width="2.5"/>
+            <text x="505" y="214" fill="#25d366" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">LUNCH &amp; TEA</text>
+            <text x="505" y="236" fill="#cbd5e1" font-family="sans-serif" font-size="13" text-anchor="middle">Separate Zone</text>
+            <text x="505" y="305" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">HYGIENIC CAMPUS</text>
+            <text x="400" y="66" fill="#00f0ff" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">RO WATER &amp; REFRESHMENT ZONE</text>
+            <text x="400" y="408" fill="#94a3b8" font-family="sans-serif" font-size="15" text-anchor="middle">Clean Washrooms &amp; Separate Dining Area for Full-Day Students</text>
+          </svg>
+        `)
+      }
+    ];
+
+    // Shift Configuration matching requirements
+    const SHIFTS = [
+      {
+        id: 'morning',
+        name: 'Morning Shift',
+        time: '6:00 AM - 12:00 PM',
+        selectValue: 'Morning (6 AM - 12 PM)',
+        basePrice: 500,
+        badge: 'Popular',
+        seatsLeft: 6,
+        features: ['6 Hours Focused Morning Study', 'High-Speed Fiber Wi-Fi', 'Individual Charging Socket', 'RO Water & Silent Cabin']
+      },
+      {
+        id: 'afternoon',
+        name: 'Afternoon Shift',
+        time: '12:00 PM - 6:00 PM',
+        selectValue: 'Afternoon (12 PM - 6 PM)',
+        basePrice: 500,
+        badge: 'Cool & Quiet',
+        seatsLeft: 8,
+        features: ['6 Hours Afternoon Slot', 'AC / Fan Ventilation', '100% Inverter Backup', 'Ergonomic Cushioned Chair']
+      },
+      {
+        id: 'evening',
+        name: 'Evening Shift',
+        time: '4:00 PM - 10:00 PM',
+        selectValue: 'Evening (4 PM - 10 PM)',
+        basePrice: 500,
+        badge: 'Revision Slot',
+        seatsLeft: 5,
+        features: ['6 Hours Evening Study', 'Focused LED Desk Light', 'Buffer-Free Mock Test Wi-Fi', 'Pin-Drop Silence']
+      },
+      {
+        id: 'night',
+        name: 'Night Owl Shift',
+        time: '10:00 PM - 6:00 AM',
+        selectValue: 'Night Owl (10 PM - 6 AM)',
+        basePrice: 600,
+        badge: '8 Hours Night',
+        seatsLeft: 7,
+        features: ['8 Hours Uninterrupted Night', 'Safe CCTV Monitored Hall', '24/7 Power & Fiber Wi-Fi', 'Ideal for Deep Revision']
+      },
+      {
+        id: 'fullday',
+        name: 'Full Day Plan',
+        time: '12 Hours Flexible Access',
+        selectValue: 'Full Day (12 Hrs)',
+        basePrice: 900,
+        badge: 'Best Value',
+        seatsLeft: 4,
+        features: ['12 Hours Daily Study', 'Priority Desk Allotment', 'Separate Lunch & Break Area', 'All Premium Amenities']
+      },
+      {
+        id: 'reserved24',
+        name: '24-Hr Reserved Seat',
+        time: '24 Hours Unlimited Access',
+        selectValue: '24-Hr Reserved Seat',
+        basePrice: 1300,
+        badge: 'VIP Fixed Seat',
+        seatsLeft: 3,
+        features: ['Dedicated Fixed Personal Seat', 'Keep Books Safely at Desk', '24/7 Day & Night Entry', 'Maximum Comfort & Privacy']
+      }
+    ];
+
+    let selectedShiftId = 'morning';
+
+    // ========================================================================
+    // GALLERY & OWNER PHOTO MANAGER (LOCALSTORAGE + CANVAS COMPRESSION)
+    // ========================================================================
+    function getGalleryPhotos() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY_PHOTOS);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return parsed;
+          }
+        }
+      } catch (e) {
+        // Fallback to defaults if storage unavailable
+      }
+      saveGalleryPhotos(DEFAULT_GALLERY_ITEMS);
+      return DEFAULT_GALLERY_ITEMS;
+    }
+
+    function saveGalleryPhotos(items) {
+      try {
+        localStorage.setItem(STORAGE_KEY_PHOTOS, JSON.stringify(items));
+      } catch (e) {
+        // Handle quota gracefully
+      }
+    }
+
+    function renderGallery() {
+      const photos = getGalleryPhotos();
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = '';
+
+      photos.forEach(function (item) {
+        const card = document.createElement('div');
+        card.className = 'glass-card gallery-card';
+        card.onclick = function () {
+          openLightbox(item);
+        };
+
+        card.innerHTML =
+          '<div class="gallery-thumb">' +
+            '<img src="' + item.src + '" alt="' + escapeHtml(item.title) + '" />' +
+            '<span class="zoom-badge">Click to Zoom</span>' +
+          '</div>' +
+          '<div class="gallery-meta">' +
+            '<h3>' + escapeHtml(item.title) + '</h3>' +
+            '<p>' + escapeHtml(item.caption) + '</p>' +
+          '</div>';
+
+        grid.appendChild(card);
+      });
+
+      if (isOwnerUnlocked) {
+        renderOwnerPhotoList();
+      }
+    }
+
+    function openLightbox(item) {
+      document.getElementById('lightboxTitle').textContent = item.title;
+      document.getElementById('lightboxImage').src = item.src;
+      document.getElementById('lightboxCaption').textContent = item.caption;
+      document.getElementById('lightboxModal').classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.add('hidden');
+    }
+
+    function closeLightboxOnBackdrop(event) {
+      if (event.target.id === 'lightboxModal') {
+        closeLightbox();
+      }
+    }
+
+    // Owner Panel Functions
+    function getOwnerPin() {
+      try {
+        return localStorage.getItem(STORAGE_KEY_PIN) || '8500';
+      } catch (e) {
+        return '8500';
+      }
+    }
+
+    function openOwnerModal() {
+      document.getElementById('ownerModal').classList.remove('hidden');
+      if (isOwnerUnlocked) {
+        document.getElementById('ownerPinGate').classList.add('hidden');
+        document.getElementById('ownerAdminContent').classList.remove('hidden');
+        renderOwnerPhotoList();
+      } else {
+        document.getElementById('ownerPinGate').classList.remove('hidden');
+        document.getElementById('ownerAdminContent').classList.add('hidden');
+        document.getElementById('ownerPinInput').value = '';
+        document.getElementById('ownerPinError').classList.add('hidden');
+      }
+    }
+
+    function closeOwnerModal() {
+      document.getElementById('ownerModal').classList.add('hidden');
+    }
+
+    function closeOwnerModalOnBackdrop(event) {
+      if (event.target.id === 'ownerModal') {
+        closeOwnerModal();
+      }
+    }
+
+    function unlockOwnerPanel(event) {
+      event.preventDefault();
+      const entered = document.getElementById('ownerPinInput').value.trim();
+      if (entered === getOwnerPin()) {
+        isOwnerUnlocked = true;
+        document.getElementById('ownerPinGate').classList.add('hidden');
+        document.getElementById('ownerAdminContent').classList.remove('hidden');
+        renderOwnerPhotoList();
+      } else {
+        document.getElementById('ownerPinError').classList.remove('hidden');
+      }
+    }
+
+    // Compress image via HTML5 Canvas so multiple photos fit cleanly in localStorage
+    function compressImageFile(file) {
+      return new Promise(function (resolve, reject) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = new Image();
+          img.onload = function () {
+            const maxWidth = 960;
+            let width = img.width;
+            let height = img.height;
+
+            if (width > maxWidth) {
+              height = Math.round((height * maxWidth) / width);
+              width = maxWidth;
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL('image/jpeg', 0.78));
+          };
+          img.onerror = reject;
+          img.src = e.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handleOwnerPhotoUpload(event) {
+      event.preventDefault();
+      const fileInput = document.getElementById('ownerFileInput');
+      const titleInput = document.getElementById('ownerPhotoTitle');
+      const captionInput = document.getElementById('ownerPhotoCaption');
+      const statusMsg = document.getElementById('uploadStatusMsg');
+      const submitBtn = document.getElementById('uploadSubmitBtn');
+
+      const files = Array.from(fileInput.files || []);
+      if (files.length === 0) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Compressing & Uploading...';
+
+      try {
+        let currentPhotos = getGalleryPhotos();
+        // Replace placeholder defaults if only defaults exist when owner uploads first real photo
+        if (currentPhotos.every(function (p) { return String(p.id).startsWith('def-'); })) {
+          currentPhotos = [];
+        }
+
+        const baseTitle = titleInput.value.trim();
+        const caption = captionInput.value.trim();
+
+        for (let i = 0; i < files.length; i++) {
+          const compressedDataUrl = await compressImageFile(files[i]);
+          const itemTitle = files.length > 1 ? baseTitle + ' (' + (i + 1) + ')' : baseTitle;
+          currentPhotos.unshift({
+            id: 'photo-' + Date.now() + '-' + i,
+            title: itemTitle,
+            caption: caption,
+            src: compressedDataUrl
+          });
+        }
+
+        saveGalleryPhotos(currentPhotos);
+        renderGallery();
+
+        fileInput.value = '';
+        titleInput.value = '';
+        captionInput.value = '';
+
+        statusMsg.className = 'status-msg status-success';
+        statusMsg.textContent = '✓ ' + files.length + ' photo(s) published to live gallery!';
+        statusMsg.classList.remove('hidden');
+      } catch (err) {
+        statusMsg.className = 'status-msg status-error';
+        statusMsg.textContent = 'Could not process image. Try a smaller photo file.';
+        statusMsg.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Compress & Publish to Live Gallery';
+      }
+    }
+
+    function renderOwnerPhotoList() {
+      const photos = getGalleryPhotos();
+      const list = document.getElementById('ownerPhotoList');
+      list.innerHTML = '';
+
+      photos.forEach(function (item) {
+        const row = document.createElement('div');
+        row.className = 'owner-photo-item';
+        row.innerHTML =
+          '<div class="owner-photo-item-left">' +
+            '<img src="' + item.src + '" alt="' + escapeHtml(item.title) + '" />' +
+            '<div style="min-width: 0;">' +
+              '<div style="font-weight: 700; font-size: 0.9rem; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' + escapeHtml(item.title) + '</div>' +
+              '<div style="font-size: 0.78rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' + escapeHtml(item.caption) + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<button type="button" class="btn-danger" onclick="deleteGalleryPhoto(\'' + item.id + '\')">Delete</button>';
+
+        list.appendChild(row);
+      });
+    }
+
+    function deleteGalleryPhoto(photoId) {
+      let photos = getGalleryPhotos().filter(function (p) {
+        return p.id !== photoId;
+      });
+      if (photos.length === 0) {
+        photos = DEFAULT_GALLERY_ITEMS;
+      }
+      saveGalleryPhotos(photos);
+      renderGallery();
+    }
+
+    function resetDefaultGallery() {
+      saveGalleryPhotos(DEFAULT_GALLERY_ITEMS);
+      renderGallery();
+      const statusMsg = document.getElementById('uploadStatusMsg');
+      statusMsg.className = 'status-msg status-success';
+      statusMsg.textContent = '✓ Gallery restored to default 4 architectural previews.';
+      statusMsg.classList.remove('hidden');
+    }
+
+    function updateOwnerPin() {
+      const newPin = document.getElementById('newOwnerPinInput').value.trim();
+      const msg = document.getElementById('pinUpdateMsg');
+      if (newPin.length < 4) {
+        msg.className = 'status-msg status-error';
+        msg.textContent = 'PIN must be at least 4 characters.';
+        msg.classList.remove('hidden');
+        return;
+      }
+      try {
+        localStorage.setItem(STORAGE_KEY_PIN, newPin);
+      } catch (e) {}
+      document.getElementById('newOwnerPinInput').value = '';
+      msg.className = 'status-msg status-success';
+      msg.textContent = '✓ Owner PIN updated successfully!';
+      msg.classList.remove('hidden');
+    }
+
+    // ========================================================================
+    // SHIFTS, REFERRAL CODES & 2-DAY FREE DEMO PASS
+    // ========================================================================
+    function isValidReferralCode(code) {
+      const cleaned = code.trim().toUpperCase();
+      return cleaned.startsWith('RAHISH-') && cleaned.length >= 7;
+    }
+
+    function getAppliedShiftCode() {
+      const val = document.getElementById('shiftReferralInput').value.trim().toUpperCase();
+      return isValidReferralCode(val) ? val : '';
+    }
+
+    function validateShiftReferralCode(explicitClick) {
+      const input = document.getElementById('shiftReferralInput');
+      const status = document.getElementById('shiftReferralStatus');
+      const code = input.value.trim().toUpperCase();
+
+      if (!code) {
+        if (explicitClick) {
+          status.className = 'status-msg status-warn';
+          status.textContent = 'Please enter a valid code starting with RAHISH- (e.g., RAHISH-8500P).';
+          status.classList.remove('hidden');
+        } else {
+          status.classList.add('hidden');
+        }
+        renderShiftCards();
+        return;
+      }
+
+      if (isValidReferralCode(code)) {
+        status.className = 'status-msg status-success';
+        status.textContent = '✓ ₹100 Referral Discount Applied Across All Shifts! (' + code + ')';
+        status.classList.remove('hidden');
+
+        const demoRefInput = document.getElementById('demoRefCode');
+        if (demoRefInput) {
+          demoRefInput.value = code;
+          validateDemoReferralCode();
+        }
+      } else {
+        status.className = 'status-msg status-error';
+        status.textContent = 'Invalid code. Referral code must start with "RAHISH-".';
+        status.classList.remove('hidden');
+      }
+
+      renderShiftCards();
+    }
+
+    function formatRupees(amount) {
+      return '₹' + amount.toLocaleString('en-IN');
+    }
+
+    function renderShiftCards() {
+      const grid = document.getElementById('shiftsGrid');
+      const appliedCode = getAppliedShiftCode();
+      const hasDiscount = appliedCode !== '';
+
+      grid.innerHTML = '';
+
+      SHIFTS.forEach(function (shift) {
+        const finalPrice = hasDiscount ? shift.basePrice - 100 : shift.basePrice;
+        const isSelected = shift.id === selectedShiftId;
+
+        const card = document.createElement('div');
+        card.className = 'glass-card shift-card' + (isSelected ? ' selected-shift' : '');
+        card.onclick = function () {
+          selectShiftAndScroll(shift);
+        };
+
+        const oldPriceHtml = hasDiscount
+          ? '<span class="shift-old-price">' + formatRupees(shift.basePrice) + '</span>'
+          : '';
+
+        const featuresHtml = shift.features
+          .map(function (item) {
+            return '<li><span class="check-icon">✓</span><span>' + item + '</span></li>';
+          })
+          .join('');
+
+        card.innerHTML =
+          '<div>' +
+            '<div class="shift-top">' +
+              '<span class="shift-badge">' + shift.badge + '</span>' +
+              '<span class="seats-left">● ' + shift.seatsLeft + ' Seats Open</span>' +
+            '</div>' +
+            '<h3 class="shift-title">' + shift.name + '</h3>' +
+            '<div class="shift-time">' + shift.time + '</div>' +
+            '<div class="shift-price-box">' +
+              '<span class="shift-price">' + formatRupees(finalPrice) + '</span>' +
+              '<span class="shift-period">/ month</span>' +
+              oldPriceHtml +
+            '</div>' +
+            '<ul class="shift-features">' + featuresHtml + '</ul>' +
+          '</div>' +
+          '<button type="button" class="btn-outline" style="width: 100%;">' +
+            (isSelected ? '✓ Selected for Demo Pass' : 'Select Shift for Free Demo') +
+          '</button>';
+
+        grid.appendChild(card);
+      });
+    }
+
+    function selectShiftAndScroll(shift) {
+      selectedShiftId = shift.id;
+      renderShiftCards();
+
+      const shiftSelect = document.getElementById('demoShift');
+      if (shiftSelect) {
+        shiftSelect.value = shift.selectValue;
+      }
+
+      const appliedCode = getAppliedShiftCode();
+      if (appliedCode) {
+        document.getElementById('demoRefCode').value = appliedCode;
+        validateDemoReferralCode();
+      }
+
+      const demoSection = document.getElementById('demo-pass');
+      if (demoSection) {
+        demoSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function generateStudentReferralCode(event) {
+      event.preventDefault();
+      const nameVal = document.getElementById('refStudentName').value.trim();
+      const phoneVal = document.getElementById('refStudentPhone').value.trim();
+
+      const lastFourDigits = phoneVal.slice(-4);
+      const cleanLetters = nameVal.replace(/[^a-zA-Z]/g, '');
+      const firstLetter = cleanLetters.length > 0 ? cleanLetters.charAt(0).toUpperCase() : 'P';
+      const uniqueCode = 'RAHISH-' + lastFourDigits + firstLetter;
+
+      document.getElementById('generatedCodeText').textContent = uniqueCode;
+      document.getElementById('generatedCodeSection').classList.remove('hidden');
+
+      const siteUrl = window.location.href.split('#')[0];
+      const shareMessage =
+        'Hello Dost! Main Rahish Library, Nalanda (24/7 Self-Study Centre) mein padhai kar raha hoon. Yahan pin-drop silence, high-speed Wi-Fi aur 24/7 inverter backup hai.\n\n' +
+        'Mera Referral Code ' + uniqueCode + ' use karke apna 2-Day Free Demo Pass book karo aur apni monthly fee par seedha ₹100 OFF pao!\n\n' +
+        'Website dekhein: ' + siteUrl;
+
+      document.getElementById('shareCodeWaBtn').href =
+        'https://wa.me/?text=' + encodeURIComponent(shareMessage);
+    }
+
+    function copyGeneratedCode() {
+      const code = document.getElementById('generatedCodeText').textContent;
+      const tempArea = document.createElement('textarea');
+      tempArea.value = code;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempArea);
+
+      const label = document.getElementById('copyBtnLabel');
+      label.textContent = 'Copied!';
+      setTimeout(function () {
+        label.textContent = 'Copy Code';
+      }, 2000);
+    }
+
+    function validateDemoReferralCode() {
+      const input = document.getElementById('demoRefCode');
+      const status = document.getElementById('demoRefStatus');
+      const code = input.value.trim().toUpperCase();
+
+      if (!code) {
+        status.classList.add('hidden');
+        return '';
+      }
+
+      if (isValidReferralCode(code)) {
+        status.className = 'status-msg status-success';
+        status.textContent = '✓ ₹100 Referral Discount Applied! (' + code + ')';
+        status.classList.remove('hidden');
+        return code;
+      } else {
+        status.className = 'status-msg status-warn';
+        status.textContent = 'Code must start with RAHISH- (e.g., RAHISH-8500P)';
+        status.classList.remove('hidden');
+        return '';
+      }
+    }
+
+    function generateDigitalPass(event) {
+      event.preventDefault();
+
+      const studentName = document.getElementById('demoName').value.trim();
+      const studentPhone = document.getElementById('demoPhone').value.trim();
+      const targetExam = document.getElementById('demoExam').value;
+      const selectedShift = document.getElementById('demoShift').value;
+      const validCode = validateDemoReferralCode();
+
+      let baseFee = 500;
+      if (selectedShift.indexOf('Night Owl') !== -1) {
+        baseFee = 600;
+      } else if (selectedShift.indexOf('Full Day') !== -1) {
+        baseFee = 900;
+      } else if (selectedShift.indexOf('24-Hr') !== -1) {
+        baseFee = 1300;
+      }
+
+      const finalFee = validCode ? baseFee - 100 : baseFee;
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const passId = 'RL-2026-' + randomNum;
+
+      const feeSummary = validCode
+        ? formatRupees(finalFee) + '/month (₹100 OFF Applied)'
+        : formatRupees(baseFee) + '/month (after 2-Day Free Trial)';
+
+      document.getElementById('passIdDisplay').textContent = passId;
+      document.getElementById('passStudentName').textContent = studentName;
+      document.getElementById('passStudentPhone').textContent = '+91 ' + studentPhone;
+      document.getElementById('passTargetExam').textContent = targetExam;
+      document.getElementById('passSelectedShift').textContent = selectedShift;
+      document.getElementById('passAppliedCode').textContent = validCode ? validCode : 'None';
+      document.getElementById('passFinalFee').textContent = feeSummary;
+
+      const waText =
+        'Hello Rahish Library (Nalanda), maine website se 2-Day Free Demo Digital Pass generate kiya hai:\n\n' +
+        'Pass ID: ' + passId + '\n' +
+        'Student Name: ' + studentName + '\n' +
+        'Mobile: +91 ' + studentPhone + '\n' +
+        'Target Exam: ' + targetExam + '\n' +
+        'Preferred Shift: ' + selectedShift + '\n' +
+        'Validity: 2 Days Free Trial\n' +
+        'Referral Code: ' + (validCode ? validCode : 'None') + '\n' +
+        'Monthly Fee Preview: ' + feeSummary + '\n\n' +
+        'Please meri 2-Day Free Demo seat confirm kar dein.';
+
+      document.getElementById('sendPassWaBtn').href =
+        'https://wa.me/919128858500?text=' + encodeURIComponent(waText);
+
+      document.getElementById('passPlaceholder').classList.add('hidden');
+      document.getElementById('digitalPassCard').classList.remove('hidden');
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    mobileMenuBtn.addEventListener('click', function () {
+      mobileDrawer.classList.toggle('hidden');
+    });
+
+    function closeMobileMenu() {
+      mobileDrawer.classList.add('hidden');
+    }
+
+    // Initialize Gallery & Shift Cards on Load
+    renderGallery();
+    renderShiftCards();
+  </script>
+</body>
+</html>
